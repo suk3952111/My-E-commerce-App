@@ -22,8 +22,6 @@ const CartItem = ({ item, updateCart, removeItem }) => {
     }
   };
 
-  console.log(item);
-
   return (
     <li className={styles.body}>
       <div>
