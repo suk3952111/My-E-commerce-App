@@ -1,0 +1,34 @@
+.body {
+  display: flex;
+  justify-content: center;
+}
+.detail {
+  width: 1024px;
+  display: flex;
+}
+
+.image {
+  margin-right: 40px;
+  flex-shrink: 0;
+  width: 430px;
+  height: 430px;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}

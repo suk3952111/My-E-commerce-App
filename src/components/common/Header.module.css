@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  height: 40px;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  /* border: 0px; */
+  font: inherit;
+  /* vertical-align: baseline; */
+}
+
+.navigator {
+  width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.navigatorComponents {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
