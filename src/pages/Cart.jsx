@@ -1,37 +1,46 @@
-import { useAuthContext } from "../App";
+import { useState, useEffect } from "react";
 import CartItem from "@/components/Cart/CartItem";
 
 const Cart = () => {
-  const { user, updateUser } = useAuthContext();
+  const [cart, setCart] = useState([]);
 
-  if (!user || !user.cart) {
-    return <p>장바구니가 비었습니다</p>;
-  }
+  useEffect(() => {
+    const localStorageUser = JSON.parse(localStorage.getItem("user"));
+    if (localStorageUser?.cart) {
+      setCart(localStorageUser.cart);
+    }
+  }, []);
 
   const calculateTotalPrice = (cart) => {
     return cart.reduce((total, item) => total + item.price * item.number, 0);
   };
 
   const updateCart = (id, newQuantity) => {
-    const updatedCart = user.cart.map((item) =>
+    const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, number: newQuantity } : item
     );
-    updateUser({ ...user, cart: updatedCart });
+    setCart(updatedCart);
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+    userData.cart = updatedCart;
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   const removeItem = (id) => {
-    const updatedCart = user.cart.filter((item) => item.id !== id);
-    updateUser({ ...user, cart: updatedCart });
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+    userData.cart = updatedCart;
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   return (
     <div>
       <h1>Shopping Cart</h1>
-      {user.cart.length === 0 ? (
+      {cart.length === 0 ? (
         <p>장바구니가 비었습니다</p>
       ) : (
         <ul>
-          {user.cart.map((item) => (
+          {cart.map((item) => (
             <CartItem
               key={item.id}
               item={item}
@@ -41,7 +50,7 @@ const Cart = () => {
           ))}
         </ul>
       )}
-      <h2>총 금액: ${calculateTotalPrice(user.cart).toFixed(2)}</h2>
+      <h2>총 금액: ${calculateTotalPrice(cart).toFixed(2)}</h2>
     </div>
   );
 };

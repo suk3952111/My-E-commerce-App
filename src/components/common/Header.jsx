@@ -13,6 +13,8 @@ const Header = () => {
   const navigate = useNavigate();
   const { user, setUser } = useAuthContext();
 
+  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
   const onLogout = async (e) => {
     e.preventDefault();
 
@@ -40,18 +42,14 @@ const Header = () => {
               Home
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink style={getLinkStyle} to="/products">
-              쇼핑몰
-            </NavLink>
-          </li> */}
         </div>
         <div className={styles.navigatorComponents}>
           {user ? (
             <>
               <NavLink style={getLinkStyle} to="/cart">
                 장바구니
-                {user.cart?.length > 0 && `(${user.cart.length})`}
+                {localStorageUser?.cart?.length > 0 &&
+                  `(${localStorageUser.cart.length})`}
               </NavLink>
               <li>안녕하세요, {user.email}님</li>
               <li>

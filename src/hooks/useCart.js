@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCart = (productDetail, user, updateUser, toggleModal) => {
+const useCart = (productDetail, toggleModal) => {
   const [cartItem, setCartItem] = useState({ price: 0, number: 0 });
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const useCart = (productDetail, user, updateUser, toggleModal) => {
     }
 
     userData.cart = cart;
-    updateUser({ ...userData });
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
