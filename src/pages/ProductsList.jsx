@@ -73,7 +73,6 @@ const ProductsList = () => {
   }
 
   const categories = [CATEGORY_ALL, ...allCategories];
-  console.log(categories);
   return (
     <div className={styles.body}>
       <div className={styles.category}>
