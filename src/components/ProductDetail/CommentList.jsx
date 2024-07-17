@@ -14,7 +14,7 @@ const CommentList = ({ comments, user, setComments }) => {
       .select();
 
     if (error) {
-      console.error("댓글을 수정하는 중 오류가 발생했습니다:", error);
+      alert("댓글을 수정하는 중 오류가 발생했습니다:", error);
     } else {
       setComments(
         comments.map((comment) =>
@@ -33,7 +33,7 @@ const CommentList = ({ comments, user, setComments }) => {
       .eq("id", commentId);
 
     if (error) {
-      console.error("댓글을 삭제하는 중 오류가 발생했습니다:", error);
+      alert("댓글을 삭제하는 중 오류가 발생했습니다:", error);
     } else {
       setComments(comments.filter((comment) => comment.id !== commentId));
     }

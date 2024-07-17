@@ -32,7 +32,7 @@ const Signup = () => {
         navigate("/");
       }
     } catch (error) {
-      console.error("회원 가입 중 오류 발생:", error.message);
+      alert("회원 가입 중 오류 발생:", error.message);
       setSignupError(error.message);
     }
   };

@@ -20,7 +20,7 @@ const AddComment = ({ productDetail, user, setComments }) => {
       .select();
 
     if (error) {
-      console.error("댓글을 추가하는 중 오류가 발생했습니다:", error);
+      alert("댓글을 추가하는 중 오류가 발생했습니다:", error);
     } else {
       setComments((prevComments) => [...prevComments, ...data]);
       setNewComment("");

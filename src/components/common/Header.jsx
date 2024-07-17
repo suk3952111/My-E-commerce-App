@@ -22,14 +22,13 @@ const Header = () => {
       const { error } = await supabase.auth.signOut();
 
       if (error) {
-        alert(error.message);
+        alert("로그아웃 중 오류 발생:", error.message);
       } else {
         setUser(null);
         navigate("/login");
       }
     } catch (error) {
-      console.error("로그아웃 중 오류 발생:", error.message);
-      alert(error.message);
+      alert("로그아웃 중 오류 발생:", error.message);
     }
   };
 

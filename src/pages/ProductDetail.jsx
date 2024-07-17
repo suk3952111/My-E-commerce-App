@@ -40,7 +40,7 @@ const ProductDetail = () => {
           .eq("product_id", productDetail.id);
 
         if (error) {
-          console.error("댓글을 가져오는 중 오류가 발생했습니다:", error);
+          alert("댓글을 가져오는 중 오류가 발생했습니다:", error);
         } else {
           setComments(data);
         }
