@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAsync } from "../hooks/useAsync";
 import { fetchProduct } from "@/api/api";
 import { FaStar, FaArrowRight, FaArrowLeft } from "react-icons/fa";
@@ -14,7 +14,6 @@ import AddComment from "@/components/ProductDetail/AddComment";
 
 const ProductDetail = () => {
   const { productSlug } = useParams();
-  const navigate = useNavigate();
   const { user } = useAuthContext();
   const [isModalOpen, toggleModal] = useToggle(false);
   const [comments, setComments] = useState([]);
@@ -24,12 +23,6 @@ const ProductDetail = () => {
     loading,
     error,
   } = useAsync(() => fetchProduct(productSlug));
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
 
   useEffect(() => {
     const fetchComments = async () => {

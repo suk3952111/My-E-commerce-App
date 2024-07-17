@@ -60,7 +60,7 @@ const CommentList = ({ comments, user, setComments }) => {
               <p>
                 <strong>{comment.email}</strong>: {comment.content}
               </p>
-              {comment.email === user.email && (
+              {comment.email === user?.email && (
                 <div>
                   <button
                     onClick={() => {
