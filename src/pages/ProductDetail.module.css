@@ -2,9 +2,32 @@
   display: flex;
   justify-content: center;
 }
+
 .detail {
   width: 1024px;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail > * {
+  border: 2px solid black;
+}
+
+.description {
+  display: flex;
+  flex-direction: row;
+}
+
+.descriptionMore {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.descriptionMoreWord::before {
+  content: "상품 설명:\A";
+  white-space: pre-wrap;
 }
 
 .image {
@@ -17,7 +40,6 @@
 .cart {
   display: flex;
   flex-direction: column;
-  width: 45vw;
   align-items: center;
   justify-content: center;
 }
@@ -31,4 +53,10 @@
 .buttons {
   display: flex;
   gap: 15px;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
