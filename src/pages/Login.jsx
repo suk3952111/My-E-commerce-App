@@ -26,6 +26,13 @@ const Login = () => {
       if (error) {
         setLoginError(error.message);
       } else {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...JSON.parse(localStorage.getItem("user")),
+            cart: [],
+          })
+        );
         navigate("/");
       }
     } catch (error) {

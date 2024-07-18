@@ -1,36 +1,22 @@
-import { useState, useEffect } from "react";
 import CartItem from "@/components/Cart/CartItem";
-
+import { useAuthContext } from "../App";
 const Cart = () => {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const localStorageUser = JSON.parse(localStorage.getItem("user"));
-    if (localStorageUser?.cart) {
-      setCart(localStorageUser.cart);
-    }
-  }, []);
+  const { cart, updateCart } = useAuthContext();
 
   const calculateTotalPrice = (cart) => {
     return cart.reduce((total, item) => total + item.price * item.number, 0);
   };
 
-  const updateCart = (id, newQuantity) => {
+  const handleUpdateCart = (id, newQuantity) => {
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, number: newQuantity } : item
     );
-    setCart(updatedCart);
-    const userData = JSON.parse(localStorage.getItem("user")) || {};
-    userData.cart = updatedCart;
-    localStorage.setItem("user", JSON.stringify(userData));
+    updateCart(updatedCart);
   };
 
-  const removeItem = (id) => {
+  const handleRemoveItem = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
-    const userData = JSON.parse(localStorage.getItem("user")) || {};
-    userData.cart = updatedCart;
-    localStorage.setItem("user", JSON.stringify(userData));
+    updateCart(updatedCart);
   };
 
   return (
@@ -44,8 +30,8 @@ const Cart = () => {
             <CartItem
               key={item.id}
               item={item}
-              updateCart={updateCart}
-              removeItem={removeItem}
+              updateCart={handleUpdateCart}
+              removeItem={handleRemoveItem}
             />
           ))}
         </ul>

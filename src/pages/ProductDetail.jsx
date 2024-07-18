@@ -6,7 +6,7 @@ import { FaStar, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "./ProductDetail.module.css";
 import Modal from "@/components/common/Modal";
 import useToggle from "@/hooks/useToggle";
-import useCart from "../hooks/useCart";
+import useCartList from "../hooks/useCartList";
 import { useAuthContext } from "../App";
 import { supabase } from "@/main";
 import CommentList from "@/components/ProductDetail/CommentList";
@@ -44,7 +44,7 @@ const ProductDetail = () => {
   }, [productDetail]);
 
   const { cartItem, addCartItemNumber, removeCartItemNumber, handleAddToCart } =
-    useCart(productDetail, toggleModal);
+    useCartList(productDetail, toggleModal);
 
   if (loading) {
     return <div>상품 상세내용을 불러오고 있습니다...</div>;

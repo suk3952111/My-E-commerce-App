@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Layout from "@/components/common/Layout";
 import useAuth from "@/hooks/useAuth";
+import useCart from "./hooks/useCart";
 import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetail";
 import ProductsList from "./pages/ProductsList";
@@ -14,9 +15,10 @@ export const useAuthContext = () => useContext(AuthContext);
 
 function App() {
   const { user, setUser } = useAuth();
+  const { cart, updateCart } = useCart();
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, cart, updateCart }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

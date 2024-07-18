@@ -1,7 +1,7 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./Header.module.css";
 import { useAuthContext } from "@/App";
 import { supabase } from "@/main";
+import { NavLink, useNavigate } from "react-router-dom";
+import styles from "./Header.module.css";
 
 function getLinkStyle({ isActive }) {
   return {
@@ -11,9 +11,7 @@ function getLinkStyle({ isActive }) {
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useAuthContext();
-
-  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+  const { user, setUser, cart } = useAuthContext();
 
   const onLogout = async (e) => {
     e.preventDefault();
@@ -47,8 +45,7 @@ const Header = () => {
             <>
               <NavLink style={getLinkStyle} to="/cart">
                 장바구니
-                {localStorageUser?.cart?.length > 0 &&
-                  `(${localStorageUser.cart.length})`}
+                {cart.length > 0 && `(${cart.length})`}
               </NavLink>
               <li>안녕하세요, {user.email}님</li>
               <li>
@@ -57,6 +54,10 @@ const Header = () => {
             </>
           ) : (
             <>
+              <NavLink style={getLinkStyle} to="/cart">
+                장바구니
+                {cart.length > 0 && `(${cart.length})`}
+              </NavLink>
               <li>
                 <NavLink style={getLinkStyle} to="/login">
                   로그인
