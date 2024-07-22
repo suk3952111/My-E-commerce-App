@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./CartItem.module.css";
 import { useAuthContext } from "../../App";
-import { supabase } from "@/main"; // Supabase 클라이언트 임포트
-
+import { supabase } from "@/main";
 const CartItem = ({ item }) => {
   const { cart, updateCart, user, updateUserCart, fetchUserCart } =
     useAuthContext();
@@ -28,8 +27,10 @@ const CartItem = ({ item }) => {
   };
   const handleUpdateCart = (id, newQuantity) => {
     if (user) {
-      const { id, created_at, ...itemWithoutId } = item;
-      updateUserCart({ ...itemWithoutId, number: newQuantity });
+      const itemWithoutId = { ...item, number: newQuantity };
+      delete itemWithoutId.id;
+      delete itemWithoutId.created_at;
+      updateUserCart(itemWithoutId);
     } else {
       const updatedCart = cart.map((item) =>
         item.id === id ? { ...item, number: newQuantity } : item
