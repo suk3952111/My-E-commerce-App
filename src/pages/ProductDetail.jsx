@@ -6,11 +6,12 @@ import { FaStar, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import styles from "./ProductDetail.module.css";
 import Modal from "@/components/common/Modal";
 import useToggle from "@/hooks/useToggle";
-import useCartList from "../hooks/useCartList";
+import useCartItem from "../hooks/useCartItem";
 import { useAuthContext } from "../App";
 import { supabase } from "@/main";
 import CommentList from "@/components/ProductDetail/CommentList";
 import AddComment from "@/components/ProductDetail/AddComment";
+import useUserCartItem from "../hooks/useUserCartItem";
 
 const ProductDetail = () => {
   const { productSlug } = useParams();
@@ -44,7 +45,14 @@ const ProductDetail = () => {
   }, [productDetail]);
 
   const { cartItem, addCartItemNumber, removeCartItemNumber, handleAddToCart } =
-    useCartList(productDetail, toggleModal);
+    useCartItem(productDetail, toggleModal);
+
+  const {
+    userCartItem,
+    incrementUserCartItemNumber,
+    decrementUserCartItemNumber,
+    addUserCartItemToCart,
+  } = useUserCartItem(productDetail, toggleModal);
 
   if (loading) {
     return <div>상품 상세내용을 불러오고 있습니다...</div>;
@@ -53,6 +61,28 @@ const ProductDetail = () => {
   if (error) {
     return <div>에러: {error.message}</div>;
   }
+
+  const {
+    number: cartNumber,
+    price: cartPrice,
+    handleAddToCart: addToCart,
+    addCartItemNumber: addNumber,
+    removeCartItemNumber: removeNumber,
+  } = user
+    ? {
+        number: userCartItem.number,
+        price: userCartItem.price,
+        handleAddToCart: addUserCartItemToCart,
+        addCartItemNumber: incrementUserCartItemNumber,
+        removeCartItemNumber: decrementUserCartItemNumber,
+      }
+    : {
+        number: cartItem.number,
+        price: cartItem.price,
+        handleAddToCart: handleAddToCart,
+        addCartItemNumber: addCartItemNumber,
+        removeCartItemNumber: removeCartItemNumber,
+      };
 
   return (
     <div className={styles.body}>
@@ -80,11 +110,11 @@ const ProductDetail = () => {
             <div className={styles.cartList}>
               <p>구매수량</p>
               <div className={styles.buttons}>
-                <button onClick={removeCartItemNumber}>
+                <button onClick={removeNumber}>
                   <FaArrowLeft />
                 </button>
-                <p>{cartItem.number}</p>
-                <button onClick={addCartItemNumber}>
+                <p>{cartNumber}</p>
+                <button onClick={addNumber}>
                   <FaArrowRight />
                 </button>
               </div>
@@ -92,13 +122,13 @@ const ProductDetail = () => {
             <div className={styles.cartList}>
               <p>총 상품 금액</p>
               <div>
-                <p>${cartItem.price * cartItem.number}</p>
+                <p>${cartPrice * cartNumber}</p>
               </div>
             </div>
             <button onClick={toggleModal}>장바구니에 추가하기</button>
             <Modal isOpen={isModalOpen} onClose={toggleModal}>
               <h2>상품을 장바구니에 추가하시겠습니까?</h2>
-              <button onClick={handleAddToCart}>예</button>
+              <button onClick={addToCart}>예</button>
               <button onClick={toggleModal}>아니요</button>
             </Modal>
           </div>

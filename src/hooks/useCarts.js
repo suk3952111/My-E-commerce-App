@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCart = () => {
+const useCarts = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const useCart = () => {
   return { cart, updateCart };
 };
 
-export default useCart;
+export default useCarts;

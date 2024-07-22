@@ -1,42 +1,31 @@
 import CartItem from "@/components/Cart/CartItem";
 import { useAuthContext } from "../App";
+
 const Cart = () => {
-  const { cart, updateCart } = useAuthContext();
+  const { cart, userCart, user } = useAuthContext();
 
-  const calculateTotalPrice = (cart) => {
-    return cart.reduce((total, item) => total + item.price * item.number, 0);
-  };
-
-  const handleUpdateCart = (id, newQuantity) => {
-    const updatedCart = cart.map((item) =>
-      item.id === id ? { ...item, number: newQuantity } : item
+  const calculateTotalPrice = (cartItems) => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.number,
+      0
     );
-    updateCart(updatedCart);
   };
 
-  const handleRemoveItem = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
-    updateCart(updatedCart);
-  };
+  const cartItems = user ? userCart : cart;
 
   return (
     <div>
       <h1>Shopping Cart</h1>
-      {cart.length === 0 ? (
+      {cartItems.length === 0 ? (
         <p>장바구니가 비었습니다</p>
       ) : (
         <ul>
-          {cart.map((item) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              updateCart={handleUpdateCart}
-              removeItem={handleRemoveItem}
-            />
+          {cartItems.map((item) => (
+            <CartItem key={item.id} item={item} />
           ))}
         </ul>
       )}
-      <h2>총 금액: ${calculateTotalPrice(cart).toFixed(2)}</h2>
+      <h2>총 금액: ${calculateTotalPrice(cartItems).toFixed(2)}</h2>
     </div>
   );
 };

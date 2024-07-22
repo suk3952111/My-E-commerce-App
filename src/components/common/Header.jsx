@@ -11,7 +11,7 @@ function getLinkStyle({ isActive }) {
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, setUser, cart } = useAuthContext();
+  const { user, setUser, cart, userCart } = useAuthContext();
 
   const onLogout = async (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ const Header = () => {
             <>
               <NavLink style={getLinkStyle} to="/cart">
                 장바구니
-                {cart.length > 0 && `(${cart.length})`}
+                {userCart.length > 0 && `(${userCart.length})`}
               </NavLink>
               <li>안녕하세요, {user.email}님</li>
               <li>

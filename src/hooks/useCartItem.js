@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "@/App";
 
-const useCartList = (productDetail, toggleModal) => {
+const useCartItem = (productDetail, toggleModal) => {
   const { cart, updateCart } = useAuthContext();
   const [cartItem, setCartItem] = useState({ price: 0, number: 0 });
 
@@ -45,4 +45,4 @@ const useCartList = (productDetail, toggleModal) => {
   return { cartItem, addCartItemNumber, removeCartItemNumber, handleAddToCart };
 };
 
-export default useCartList;
+export default useCartItem;
