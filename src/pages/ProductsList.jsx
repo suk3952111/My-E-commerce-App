@@ -38,17 +38,20 @@ const ProductsList = () => {
 
   useEffect(() => {
     if (products) {
-      let sortedProducts = [...products];
+      let filteredProducts = [...products];
 
       if (filters.category !== CATEGORY_ALL) {
-        sortedProducts = sortedProducts.filter(
+        filteredProducts = filteredProducts.filter(
           (product) => product.category === filters.category
         );
       }
 
-      sortedProducts = sortProducts(sortedProducts, filters.sortOption);
+      let sortedFilteredProducts = sortProducts(
+        filteredProducts,
+        filters.sortOption
+      );
 
-      setFilteredProducts(sortedProducts);
+      setFilteredProducts(sortedFilteredProducts);
     }
   }, [products, filters]);
 

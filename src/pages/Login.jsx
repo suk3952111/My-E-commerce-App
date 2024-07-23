@@ -26,10 +26,16 @@ const Login = () => {
       if (error) {
         setLoginError(error.message);
       } else {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...JSON.parse(localStorage.getItem("user")),
+            cart: [],
+          })
+        );
         navigate("/");
       }
     } catch (error) {
-      console.error("로그인 중 오류 발생:", error.message);
       setLoginError(error.message);
     }
   };
