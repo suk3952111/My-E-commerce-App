@@ -7,7 +7,7 @@
 # 📦 My E-commerce App
 
 **My E-commerce App**은 React, Vite, Supabase, `fakestoreapi`, `react-hook-form`을 이용하여 구현한 간단한 인터넷 쇼핑몰 웹 애플리케이션입니다. 사용자는 상품을 조회하고, 장바구니에 담고, 댓글을 추가할 수 있습니다.
-
+https://my-e-commerce-app-pink.vercel.app/
 ---
 
 ## 📌 주요 기능
