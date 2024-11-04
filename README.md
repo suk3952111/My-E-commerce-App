@@ -1,10 +1,14 @@
-아래는 지금까지 작업 내용을 바탕으로 작성한 `README.md` 파일 예시입니다. 프로젝트의 목적, 기능, 설정 및 사용법, 주요 컴포넌트 설명, 그리고 추가적인 정보들이 포함되어 있습니다.
+
+![scrnli_HD7sp9QgbQu4EN](https://github.com/user-attachments/assets/999815c7-e678-4859-8d1b-c4e699443559)
+![scrnli_3tshGDDG0qr7z9](https://github.com/user-attachments/assets/dee44658-006f-4c12-9d91-e62a1de15b11)
+![scrnli_m9YJ4xs9OqQy96](https://github.com/user-attachments/assets/aa801f6a-bc1c-4ad0-b9e6-d112566c6d7d)
+아래는 `fakestoreapi`와 `react-hook-form`의 사용을 포함하여 업데이트된 `README.md` 파일입니다.
 
 ---
 
 # 📦 My E-commerce App
 
-**My E-commerce App**은 React, Vite, Supabase를 이용하여 구현한 간단한 인터넷 쇼핑몰 웹 애플리케이션입니다. 사용자는 상품을 조회하고, 장바구니에 담고, 댓글을 추가할 수 있습니다.
+**My E-commerce App**은 React, Vite, Supabase, `fakestoreapi`, `react-hook-form`을 이용하여 구현한 간단한 인터넷 쇼핑몰 웹 애플리케이션입니다. 사용자는 상품을 조회하고, 장바구니에 담고, 댓글을 추가할 수 있습니다.
 
 ---
 
@@ -33,7 +37,7 @@ cd my-ecommerce-app
 npm install
 ```
 
-### 3. Supabase 설정
+### 3. Supabase 및 `fakestoreapi` 설정
 
 - Supabase에서 프로젝트를 생성하고, Supabase URL과 익명 키를 발급받습니다.
 - Supabase에 다음 테이블을 추가합니다:
@@ -42,6 +46,9 @@ npm install
   - **`comments`**: 댓글 데이터
   - **`cart`**: 장바구니 데이터
 
+- **`fakestoreapi` 사용**:
+  - `fakestoreapi`의 `https://fakestoreapi.com/products` 및 `https://fakestoreapi.com/products/categories` 엔드포인트를 통해 상품 및 카테고리 데이터를 가져옵니다. (데이터 페칭 로직은 `fetchProducts`, `fetchCategories` API 호출에서 구현되었습니다.)
+  
 - Supabase 설정 파일에 환경 변수를 추가합니다:
 
   ```env
@@ -92,6 +99,7 @@ src/
 ### `ProductsList.js`
 - **기능**: 상품 목록을 보여주며, 카테고리 및 정렬 옵션을 선택할 수 있습니다.
 - **사용한 라이브러리**: `react-router-dom` (페이지 라우팅), `uuid` (고유 키 생성)
+- **API**: `fakestoreapi`를 통해 상품 및 카테고리 데이터를 가져옵니다.
 - **스타일링**: 상품 카드에 `hover` 효과를 추가하여 사용자 경험을 개선했습니다.
 
 ### `ProductDetail.js`
@@ -141,6 +149,8 @@ src/
 ## 💡 추가 정보
 
 - **Supabase**: Supabase를 이용해 백엔드 없이 빠르게 데이터베이스와 인증 기능을 구현했습니다.
+- **fakestoreapi**: `fakestoreapi`를 통해 기본 상품 데이터를 로드하여 빠르게 개발을 시작할 수 있었습니다.
+- **React Hook Form**: `react-hook-form` 라이브러리를 사용하여 회원가입 및 로그인 폼을 쉽게 구현하였습니다.
 - **React Hooks**: `useAsync`, `useAuth`, `useToggle`과 같은 커스텀 훅을 작성하여 코드 재사용성을 높였습니다.
 - **React Router**: `react-router-dom`을 사용하여 다중 페이지 네비게이션을 구현했습니다.
 
@@ -168,4 +178,4 @@ PR(Pull Request)을 통해 코드 리뷰 및 기능 개선을 환영합니다. �
 
 --- 
 
-이렇게 작성된 `README.md` 파일은 프로젝트의 구조와 기능을 간략하게 설명하며, 필요한 설정과 각 주요 컴포넌트의 역할을 이해하는 데 도움을 줍니다.
+이제 `README.md` 파일은 `fakestoreapi`와 `react-hook-form` 사용에 대한 정보도 포함하여 프로젝트 전체를 잘 설명하고 있습니다.
