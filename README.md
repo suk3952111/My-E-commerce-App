@@ -2,8 +2,6 @@
 ![scrnli_HD7sp9QgbQu4EN](https://github.com/user-attachments/assets/999815c7-e678-4859-8d1b-c4e699443559)
 ![scrnli_3tshGDDG0qr7z9](https://github.com/user-attachments/assets/dee44658-006f-4c12-9d91-e62a1de15b11)
 ![scrnli_m9YJ4xs9OqQy96](https://github.com/user-attachments/assets/aa801f6a-bc1c-4ad0-b9e6-d112566c6d7d)
-아래는 `fakestoreapi`와 `react-hook-form`의 사용을 포함하여 업데이트된 `README.md` 파일입니다.
-
 ---
 
 # 📦 My E-commerce App
