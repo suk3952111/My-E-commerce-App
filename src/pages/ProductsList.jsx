@@ -5,6 +5,7 @@ import { fetchProducts, fetchCategories } from "@/api/api";
 import { sortProducts } from "@/utils/util";
 import styles from "./ProductsList.module.css";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const SORT_OPTIONS = {
   PRICE_LOW_TO_HIGH: "price-lowtohigh",
@@ -64,7 +65,9 @@ const ProductsList = () => {
   };
 
   if (productsLoading || categoriesLoading) {
-    return <div>상품들을 불러오고 있습니다...</div>;
+    return (
+      <div className={styles.loadingMessage}>상품들을 불러오고 있습니다...</div>
+    );
   }
 
   if (productsError) {
@@ -76,13 +79,14 @@ const ProductsList = () => {
   }
 
   const categories = [CATEGORY_ALL, ...allCategories];
+
   return (
     <div className={styles.body}>
       <div className={styles.category}>
         <div>
           <p>인터넷쇼핑몰입니다!</p>
         </div>
-        <div>
+        <div className={styles.categoryControls}>
           <label>
             카테고리 선택:
             <select
@@ -90,8 +94,8 @@ const ProductsList = () => {
               value={filters.category}
               onChange={handleFilterChange}
             >
-              {categories.map((cat, index) => (
-                <option key={index} value={cat}>
+              {categories.map((cat) => (
+                <option key={uuidv4()} value={cat}>
                   {cat}
                 </option>
               ))}
@@ -116,11 +120,12 @@ const ProductsList = () => {
           </label>
         </div>
       </div>
+
       <div>
         <p className={styles.itemListTitle}>상품 리스트</p>
         <ul className={styles.itemList}>
           {filteredProducts.map((product) => (
-            <li key={`key-${product.id}`} className={styles.items}>
+            <li key={uuidv4()} className={styles.items}>
               <Link
                 to={`/products/${product.id}`}
                 style={{ textDecoration: "none" }}

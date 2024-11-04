@@ -1,3 +1,114 @@
+/* 전체 컨테이너 스타일 */
+.body {
+  max-width: 400px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* 타이틀 스타일 */
+.title {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* 폼 스타일 */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* 입력 그룹 스타일 */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  padding-right: 3rem; /* Show/Hide 버튼 위치 확보를 위한 여백 */
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 .error {
   color: red;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  opacity: 0; /* 초기 상태: 보이지 않음 */
+  transform: translateY(-10px); /* 초기 상태: 약간 위에 위치 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* 전환 효과 추가 */
+  height: 0;
+  overflow: hidden;
+}
+
+.error.show {
+  opacity: 1; /* 보이는 상태 */
+  transform: translateY(0); /* 제자리로 이동 */
+  height: auto; /* 높이 자동 조절 */
+}
+
+/* 비밀번호 컨테이너 */
+.passwordContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Show/Hide 버튼 스타일 */
+.toggleButton {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.toggleButton:hover {
+  text-decoration: underline;
+}
+
+/* 제출 버튼 스타일 */
+.submitButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
 }
