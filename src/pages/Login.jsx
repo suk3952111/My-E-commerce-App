@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import useToggle from "../hooks/useToggle";
-import "./Login.css";
+import styles from "./Signup.module.css"; // 회원가입 페이지와 동일한 CSS 파일 사용
 import { supabase } from "@/main";
 
 const Login = () => {
@@ -35,13 +35,14 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>로그인</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>이메일:</label>
+    <div className={styles.body}>
+      <h2 className={styles.title}>로그인</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>이메일:</label>
           <input
             type="text"
+            className={styles.input}
             {...register("email", {
               required: "Email ID를 입력해주세요",
               pattern: {
@@ -54,13 +55,18 @@ const Login = () => {
               },
             })}
           />
-          {errors.email && <p className="error">{errors.email.message}</p>}
+          {errors.email && (
+            <p className={`${styles.error} ${errors.email ? styles.show : ""}`}>
+              {errors.email.message}
+            </p>
+          )}
         </div>
-        <div>
-          <label>비밀번호:</label>
-          <div>
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>비밀번호:</label>
+          <div className={styles.passwordContainer}>
             <input
               type={showPassword ? "text" : "password"}
+              className={styles.input}
               {...register("password", {
                 required: "비밀번호를 입력해주세요.",
                 minLength: {
@@ -69,16 +75,32 @@ const Login = () => {
                 },
               })}
             />
+            <button
+              type="button"
+              onClick={toggleShowPassword}
+              className={styles.toggleButton}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </div>
-          <button type="button" onClick={toggleShowPassword}>
-            {showPassword ? "Hide" : "Show"}
-          </button>
           {errors.password && (
-            <p className="error">{errors.password.message}</p>
+            <p
+              className={`${styles.error} ${
+                errors.password ? styles.show : ""
+              }`}
+            >
+              {errors.password.message}
+            </p>
           )}
         </div>
-        {loginError && <p className="error">{loginError}</p>}
-        <button type="submit">로그인</button>
+        {loginError && (
+          <p className={`${styles.error} ${loginError ? styles.show : ""}`}>
+            {loginError}
+          </p>
+        )}
+        <button type="submit" className={styles.submitButton}>
+          로그인
+        </button>
       </form>
     </div>
   );

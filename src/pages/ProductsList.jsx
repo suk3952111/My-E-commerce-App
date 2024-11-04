@@ -65,7 +65,9 @@ const ProductsList = () => {
   };
 
   if (productsLoading || categoriesLoading) {
-    return <div>상품들을 불러오고 있습니다...</div>;
+    return (
+      <div className={styles.loadingMessage}>상품들을 불러오고 있습니다...</div>
+    );
   }
 
   if (productsError) {
@@ -77,14 +79,14 @@ const ProductsList = () => {
   }
 
   const categories = [CATEGORY_ALL, ...allCategories];
-  console.log(categories);
+
   return (
     <div className={styles.body}>
       <div className={styles.category}>
         <div>
           <p>인터넷쇼핑몰입니다!</p>
         </div>
-        <div>
+        <div className={styles.categoryControls}>
           <label>
             카테고리 선택:
             <select
@@ -118,6 +120,7 @@ const ProductsList = () => {
           </label>
         </div>
       </div>
+
       <div>
         <p className={styles.itemListTitle}>상품 리스트</p>
         <ul className={styles.itemList}>

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { supabase } from "@/main";
-import styles from "@/pages/ProductDetail.module.css";
+import styles from "./AddComment.module.css";
 import { useNavigate } from "react-router-dom";
 import { uploadImage } from "@/utils/uploadImage"; // 업로드 함수 임포트
 

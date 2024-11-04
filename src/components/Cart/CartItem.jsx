@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import styles from "./CartItem.module.css";
+import styles from "../../pages/Cart.module.css";
 import {
   useAuthContext,
   useLocalCartContext,
   useUserCartContext,
 } from "../../App";
 import { supabase } from "@/main";
+
 const CartItem = ({ item }) => {
   const { user } = useAuthContext();
   const { cart, updateCart } = useLocalCartContext();
@@ -30,6 +31,7 @@ const CartItem = ({ item }) => {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
+
   const handleUpdateCart = (id, newQuantity) => {
     if (user) {
       const itemWithoutId = { ...item, number: newQuantity };
@@ -74,16 +76,27 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <li className={styles.body}>
-      <div>
-        <h2>{item.title}</h2>
-        <p>가격: ${item.price}</p>
-        <p>수량: {quantity}</p>
-        <button onClick={increaseQuantity}>+</button>
-        <button onClick={decreaseQuantity}>-</button>
-        <button onClick={() => handleRemoveItem(item.id)}>삭제</button>
+    <li className={styles.cartItem}>
+      <div className={styles.itemDetails}>
+        <h2 className={styles.itemTitle}>{item.title}</h2>
+        <p className={styles.itemPrice}>가격: ${item.price}</p>
+        <div className={styles.quantityContainer}>
+          <button onClick={decreaseQuantity} className={styles.quantityButton}>
+            -
+          </button>
+          <p>{quantity}</p>
+          <button onClick={increaseQuantity} className={styles.quantityButton}>
+            +
+          </button>
+        </div>
+        <button
+          onClick={() => handleRemoveItem(item.id)}
+          className={styles.deleteButton}
+        >
+          삭제
+        </button>
       </div>
-      <img className={styles.image} src={item.image} alt="itemImage" />
+      <img className={styles.itemImage} src={item.image} alt={item.title} />
     </li>
   );
 };

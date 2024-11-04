@@ -35,7 +35,11 @@ const ProductDetail = () => {
   } = useUserCartItem(productDetail, toggleModal);
 
   if (loading) {
-    return <div>상품 상세내용을 불러오고 있습니다...</div>;
+    return (
+      <div className={styles.loadingMessage}>
+        상품 상세내용을 불러오고 있습니다...
+      </div>
+    );
   }
 
   if (error) {

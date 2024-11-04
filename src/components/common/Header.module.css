@@ -1,26 +1,61 @@
 .header {
   display: flex;
-  height: 40px;
-  border-bottom: 1px solid rgb(238, 238, 238);
+  height: 60px;
+  border-bottom: 1px solid rgb(220, 220, 220);
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin: 0px;
-  padding: 0px;
-  /* border: 0px; */
-  font: inherit;
-  /* vertical-align: baseline; */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
 
 .navigator {
-  width: 1024px;
+  width: 100%;
+  max-width: 1024px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0;
   list-style-type: none;
 }
 
 .navigatorComponents {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
+}
+
+.navigatorComponents li {
+  list-style: none;
+}
+
+.navigatorComponents a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navigatorComponents a:hover {
+  color: #007bff;
+}
+
+.navigatorComponents .active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.navigatorComponents button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navigatorComponents button:hover {
+  color: #e74c3c;
 }
