@@ -9,6 +9,7 @@ import ProductsList from "./pages/ProductsList";
 import useAuth from "@/hooks/useAuth";
 import useCarts from "@/hooks/useCarts";
 import useUserCarts from "@/hooks/useUserCarts";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const AuthContext = createContext(null);
 const LocalCartContext = createContext(null);
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
               </Route>
             </Routes>
+            <SpeedInsights />
           </BrowserRouter>
         </UserCartContext.Provider>
       </LocalCartContext.Provider>
