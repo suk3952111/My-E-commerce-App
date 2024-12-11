@@ -1,15 +1,12 @@
-
-![scrnli_HD7sp9QgbQu4EN](https://github.com/user-attachments/assets/999815c7-e678-4859-8d1b-c4e699443559)
-![scrnli_3tshGDDG0qr7z9](https://github.com/user-attachments/assets/dee44658-006f-4c12-9d91-e62a1de15b11)
-![scrnli_m9YJ4xs9OqQy96](https://github.com/user-attachments/assets/aa801f6a-bc1c-4ad0-b9e6-d112566c6d7d)
----
-
 # 📦 My E-commerce App
 
 **My E-commerce App**은 React, Vite, Supabase, `fakestoreapi`, `react-hook-form`을 이용하여 구현한 간단한 인터넷 쇼핑몰 웹 애플리케이션입니다. 사용자는 상품을 조회하고, 장바구니에 담고, 댓글을 추가할 수 있습니다.
 https://my-e-commerce-app-pink.vercel.app/
 ---
-
+![scrnli_HD7sp9QgbQu4EN](https://github.com/user-attachments/assets/999815c7-e678-4859-8d1b-c4e699443559)
+![scrnli_3tshGDDG0qr7z9](https://github.com/user-attachments/assets/dee44658-006f-4c12-9d91-e62a1de15b11)
+![scrnli_m9YJ4xs9OqQy96](https://github.com/user-attachments/assets/aa801f6a-bc1c-4ad0-b9e6-d112566c6d7d)
+---
 ## 📌 주요 기능
 
 - **상품 목록**: 모든 상품을 카테고리별로 필터링하고, 가격 및 평점 등 다양한 기준으로 정렬할 수 있습니다.
