@@ -3,6 +3,8 @@
 **My E-commerce App**은 React, Vite, Supabase, `fakestoreapi`, `react-hook-form`을 이용하여 구현한 간단한 인터넷 쇼핑몰 웹 애플리케이션입니다. 사용자는 상품을 조회하고, 장바구니에 담고, 댓글을 추가할 수 있습니다.
 https://my-e-commerce-app-pink.vercel.app/
 ---
+## 📷 스크린샷
+
 ![scrnli_HD7sp9QgbQu4EN](https://github.com/user-attachments/assets/999815c7-e678-4859-8d1b-c4e699443559)
 ![scrnli_3tshGDDG0qr7z9](https://github.com/user-attachments/assets/dee44658-006f-4c12-9d91-e62a1de15b11)
 ![scrnli_m9YJ4xs9OqQy96](https://github.com/user-attachments/assets/aa801f6a-bc1c-4ad0-b9e6-d112566c6d7d)
@@ -11,7 +13,7 @@ https://my-e-commerce-app-pink.vercel.app/
 
 - **상품 목록**: 모든 상품을 카테고리별로 필터링하고, 가격 및 평점 등 다양한 기준으로 정렬할 수 있습니다.
 - **상품 상세 보기**: 상품의 상세 정보를 볼 수 있으며, 수량을 조정하여 장바구니에 추가할 수 있습니다.
-- **장바구니**: 장바구니에 담긴 상품을 확인하고, 수량을 조절하거나 삭제할 수 있습니다.
+- **장바구니**: 로그인된 유저와 로그인 되지 않은 유저를 구분하여 장바구니에 담긴 상품을 확인하고, 수량을 조절하거나 삭제할 수 있습니다.
 - **댓글 추가 및 관리**: 상품에 댓글을 작성하고, 수정하거나 삭제할 수 있습니다. 이미지도 함께 업로드할 수 있습니다.
 - **사용자 인증**: 사용자는 로그인, 회원가입 기능을 통해 자신의 계정을 관리할 수 있습니다.
 
@@ -153,7 +155,7 @@ src/
 
 ## 🚀 배포 및 테스트
 
-- 이 프로젝트는 `Vercel`을 통해 배포 가능합니다. 배포 환경에서도 Supabase와의 연동을 위해 환경 변수를 설정해야 합니다.
+- 이 프로젝트는 `Vercel`을 통해 배포 되었습니다. 배포 환경에서도 Supabase와의 연동을 위해 환경 변수가 설정되었습니다.
   
 ---
 
@@ -167,10 +169,3 @@ MIT License. 자유롭게 수정 및 재배포가 가능합니다.
 
 PR(Pull Request)을 통해 코드 리뷰 및 기능 개선을 환영합니다. ✨
 
---- 
-
-이 문서는 프로젝트를 이해하고 설정하는 데 필요한 모든 정보를 포함하고 있습니다. 프로젝트를 실행해보고 추가 기능을 개발해보세요! 😄
-
---- 
-
-이제 `README.md` 파일은 `fakestoreapi`와 `react-hook-form` 사용에 대한 정보도 포함하여 프로젝트 전체를 잘 설명하고 있습니다.
